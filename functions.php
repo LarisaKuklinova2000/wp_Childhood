@@ -6,11 +6,13 @@ function childhood_styles() {
     wp_enqueue_style( 'childhood-style', get_stylesheet_uri() );
     // wp_enqueue_style( 'header-style', get_template_directory_uri() . '/assets/styles/main.min.css' ); - подключить дополнительный стиль, помимо главного
     // wp_enqueue_style( 'animate-style', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css' ); - подключить стиль с cdn
-}
+};
 
 function childhood_scripts() {
     wp_enqueue_script( 'childhood-scripts', get_template_directory_uri() . '/assets/js/main.min.js' , array(), null, true);
-}
+};
+
+add_theme_support( 'custom-logo' );
 
 
 ?>

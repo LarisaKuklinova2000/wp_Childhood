@@ -74,15 +74,24 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-1">
                         <div class="about__img">
-                            <img src="<?php echo bloginfo('template_url'); ?>/assets/img/about.jpg" alt="про компанию">
+                            <!-- <img src="<?php the_field('about_img'); ?>" alt="про компанию"> -->
+                            <?php 
+                                $image = get_field('about_img');
+
+                                if (!empty($image)): ?>
+                                    <img 
+                                    src="<?php echo $image['url']; ?>" 
+                                    alt="about company">
+                                <?php endif;
+                                print_r($image)
+                            ?>
+                            
                         </div>
                     </div>
                     <div class="col-md-10 offset-md-1 offset-lg-0 col-lg-6 col-xl-5 offset-xl-1">
-                        <h1 class="title underlined">Про компанию</h1>
+                        <h1 class="title underlined"><?php the_field('about_title'); ?></h1>
                         <div class="about__text">
-                            Наша компания уже больше десяти лет дарит позитивные эмоции детям и их родителям. Мы воплощаем все детские мечты и помогаем родителям дарить счастливое детство!
-                            <br> <br>
-                            Но и взрослые иногда так нуждаются в детских эмоциях! Мы можем и это, ведь так приятно почувствовать заботу даже когда тебе за... :)
+                            <?php the_field('about_descr'); ?>
                         </div>
                         <a href="#" class="button">Узнать больше</a>
                     </div>
@@ -94,7 +103,7 @@
                 <div class="title">Наша команда</div>
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
-                        <img class="specialists__img" src="<?php echo bloginfo('template_url'); ?>/assets/img/team.jpg" alt="наша команда">
+                        <img class="specialists__img" src="<?php the_field('team_photo'); ?>" alt="наша команда">
                     </div>
                 </div>
             </div>
@@ -503,25 +512,6 @@
                 </div>
             </div>
         </div>
-
-<?php
-
-    //хуки события
-    // function print_hello($text, $name) {
-    //     echo 'Hello world' . $text . ' ' . $name;
-    // };
-    // add_action( 'my_hook', 'print_hello', 10, 2 );
-    // do_action( 'my_hook', 'dear custumer', 'Ivan' );
-
-    //хуки фильтры
-    // function my_filter_function($str) {
-    //     return 'Hello ' . $str;
-    // };
-    // add_filter( 'my_filter', 'my_filter_function', 15);
-    // echo apply_filters( 'my_filter', 'World' );
-    // remove_filter( 'my_filter', 'my_filter_function', 15 );
-    // echo apply_filters( 'my_filter', 'World' );
-?>
 
 <?php
     get_footer();
